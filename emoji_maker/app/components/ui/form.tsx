@@ -25,8 +25,9 @@ export const EmojiForm = ({ onGenerate }: { onGenerate: (emojis: string[]) => vo
         throw new Error('Failed to generate emoji');
       }
 
-      const { output } = await response.json();
-      onGenerate(output);
+      const data = await response.json();
+      console.log('API Response:', data);
+      onGenerate(data.output);
     } catch (error) {
       console.error('Error:', error);
       alert('Failed to generate emoji. Please try again.');
